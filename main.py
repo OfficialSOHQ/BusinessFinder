@@ -2,7 +2,7 @@ import googlemaps
 import uuid
 from types import GeneratorType
 import responses
-from . import TestCase
+from __init__ import TestCase
 
 
 class PlacesTest(TestCase):
@@ -35,6 +35,12 @@ class PlacesTest(TestCase):
         
         self.assertEqual(1,len(responses.calls))
         self.assertURLEqual(
-            "%s?language=en&location=33.696462%%2C-117.798897&rankby=distance&type=restaurant&key=%s" %(url, self.key),
+            "%s?language=en&location=33.696462%%2C-117.798897&rankby=distance&maxprice=None&minprice=None&type=restaurant&key=%s" %(url, self.key),
             responses.calls[0].request.url,
         )
+        print(responses.calls[0].request.url)
+        
+
+t1 = PlacesTest()
+t1.setUp()
+t1.test_search_places_nearby()
