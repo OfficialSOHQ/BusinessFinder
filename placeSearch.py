@@ -41,7 +41,7 @@ class PlacesSearchTest(TestCase):
         config.responseJson = responses.calls[0].request.body
         print(config.responseJson)
 
-t1 = PlacesSearchTest()
+# t1 = PlacesSearchTest()
 
-t1.setUp()
-t1.test_search_places_nearby()
+# t1.setUp()
+# t1.test_search_places_nearby()
