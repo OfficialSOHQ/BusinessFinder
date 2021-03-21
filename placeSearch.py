@@ -1,11 +1,10 @@
 import googlemaps
-import uuid
-from types import GeneratorType
 import responses
 from __init__ import TestCase
+import config
 
 
-class PlacesTest(TestCase):
+class PlacesSearchTest(TestCase):
     def setUp(self):
         self.key = "AIzaSyDJZMEwUkoKPrBqgvF54T9cnwBEqTP4Pzs"
         self.client = googlemaps.Client(self.key)
@@ -39,8 +38,10 @@ class PlacesTest(TestCase):
             responses.calls[0].request.url,
         )
         print(responses.calls[0].request.url)
-        
+        config.responseJson = responses.calls[0].request.body
+        print(config.responseJson)
 
-t1 = PlacesTest()
+t1 = PlacesSearchTest()
+
 t1.setUp()
 t1.test_search_places_nearby()
