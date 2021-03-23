@@ -8,7 +8,7 @@ import urllib.request, json
 class PlacesSearchTest(TestCase):
     
     def setUp(self, latlong, type, radius):
-        self.key = #***INSERT_KEY_HERE***
+        self.key = #***INSERT API KEY HERE***
         self.client = googlemaps.Client(self.key)
         self.location = (latlong[0],latlong[1])
         #self.location = (33.696462,-117.798897)

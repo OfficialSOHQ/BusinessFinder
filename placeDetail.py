@@ -8,7 +8,7 @@ import urllib.request, json
 class PlacesDetailTest(TestCase):
     
     def setUp(self, id):
-        self.key = "AIzaSyDJZMEwUkoKPrBqgvF54T9cnwBEqTP4Pzs"
+        self.key = #***INSERT API KEY HERE***
         self.client = googlemaps.Client(self.key)
         self.id = id
         self.language = "en"
