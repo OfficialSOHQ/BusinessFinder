@@ -27,26 +27,30 @@ def main():
         del item['html_attributions']
         del item['status']
         
-    keys = totexamples[0]['result'].keys()
+    try:
+        keys = totexamples[0]['result'].keys()
+        
+        with open('unordereddetailsfile.csv', 'w') as output_file:
+            dict_writer = csv.DictWriter(output_file, keys)
+            dict_writer.writeheader()
+            for item in totexamples:
+                try:
+                    dict_writer.writerow(item['result'])
+                except UnicodeEncodeError:
+                    pass
+            
+            
+        with open('unordereddetailsfile.csv','r') as input_file, open('detailsfile.csv','w') as output_file:
+            fields = ['name','formatted_address','formatted_phone_number','website']
+            writer = csv.DictWriter(output_file, fieldnames=fields)
+            writer.writeheader()
+            for row in csv.DictReader(input_file):
+                writer.writerow(row)
+                
+        os.remove('unordereddetailsfile.csv')
     
-    with open('unordereddetailsfile.csv', 'w') as output_file:
-        dict_writer = csv.DictWriter(output_file, keys)
-        dict_writer.writeheader()
-        for item in totexamples:
-            try:
-                dict_writer.writerow(item['result'])
-            except UnicodeEncodeError:
-                pass
-            
-            
-    with open('unordereddetailsfile.csv','r') as input_file, open('detailsfile.csv','w') as output_file:
-        fields = ['name','formatted_address','formatted_phone_number','website']
-        writer = csv.DictWriter(output_file, fieldnames=fields)
-        writer.writeheader()
-        for row in csv.DictReader(input_file):
-            writer.writerow(row)
-            
-    os.remove('unordereddetailsfile.csv')
+    except IndexError:
+        pass
     
 if __name__ == "__main__":
     main() 

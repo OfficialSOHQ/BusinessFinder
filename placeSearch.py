@@ -33,8 +33,9 @@ class PlacesSearchTest(TestCase):
         self.client.places_nearby(
             location = self.location,
             language = self.language,
-            rank_by = "distance",
-            type = self.type
+            type = self.type,
+            #rank_by = "distance",
+            radius = self.radius
             )
         
         # self.assertEqual(1,len(responses.calls))
