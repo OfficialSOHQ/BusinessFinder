@@ -1,5 +1,4 @@
 import unittest
-import codecs
 
 from urllib.parse import urlparse, parse_qsl
 
